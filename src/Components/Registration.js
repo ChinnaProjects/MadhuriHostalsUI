@@ -11,7 +11,10 @@ export const Registration = () => {
       admin_email_id: email,
       admin_password: password,
     };
-    const res = await axios.post("/registration", data);
+    const res = await axios.post(
+      "https://madhuri-hostals-ui.vercel.app/registration",
+      data
+    );
     console.log(res);
   };
   const handleRegistration = (event) => {
