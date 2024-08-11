@@ -1,21 +1,29 @@
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const Registration = () => {
   const [name, setName] = React.useState();
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
+  const [successMessage, setSuccessmessage] = React.useState("");
+  const navigate = useNavigate();
   const submitData = async () => {
     const data = {
       admin_name: name,
       admin_email_id: email,
       admin_password: password,
     };
-    const res = await axios.post(
-      "https://madhuri-hostals-ui.vercel.app/registration",
-      data
-    );
-    console.log(res);
+    try {
+      const res = await axios.post("/registration", data);
+      console.log(res);
+      setSuccessmessage("User is Login Successfully !!!");
+      setTimeout(() => {
+        navigate("/login"); // Navigate to Login page after success
+      }, 2000);
+    } catch (error) {
+      setSuccessmessage("User Registration is Failed!!!");
+    }
   };
   const handleRegistration = (event) => {
     event.preventDefault();
@@ -58,8 +66,10 @@ export const Registration = () => {
           onChange={(event) => setPassword(event.target.value)}
         />
         <br />
-        <button type="submit">Submit</button>
+        <button type="submit">Register</button>
       </form>
+      {successMessage && <p>{successMessage}</p>}
+      {/* Display success message */}
     </div>
   );
 };

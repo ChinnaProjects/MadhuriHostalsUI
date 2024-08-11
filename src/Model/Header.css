@@ -1,0 +1,33 @@
+.header-body {
+  background-color: lightcoral;
+}
+.header {
+  margin-top: 15px;
+  /* background-color: lightcoral; */
+  font-style: italic;
+  font-size: 32px;
+  font-family: sans-serif;
+  text-align: center;
+  display: inline-block;
+  animation: moveRightToLeft 10s linear infinite;
+  white-space: nowrap; /* Prevent the text from wrapping */
+  line-height: 20px;
+}
+/* .body {
+  padding: 0px;
+  margin: 0px;
+  background-color: aquamarine;
+} */
+
+/* animations.css */
+@keyframes moveRightToLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
